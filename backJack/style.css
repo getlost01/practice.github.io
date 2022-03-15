@@ -1,8 +1,6 @@
 body{
   font-family: 'Trebuchet MS', Arial, sans-serif;
-  background-color: rgb(37, 31, 31);
-  background-image: url(images/mback.jpg);
-  background-size:cover;
+  background-color: #5c06b3;
   color: azure;
   text-align: center;
   padding-top: 10%;
@@ -12,14 +10,14 @@ body{
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 5px;
-  box-shadow: 0 0 5px #400b75;
+  box-shadow: 0 0 8px #400b75;
   background-color: rgb(26, 26, 26);
   background-image:url(images/back.jpg);
   background-size:cover;
   padding: 15px;
 }
 .row:hover{
-  box-shadow: 0 0 4px rgba(28, 147, 245, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 h1{
   font-size: 60px;

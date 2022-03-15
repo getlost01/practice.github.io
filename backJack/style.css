@@ -58,9 +58,11 @@ input{
   padding: 10px;
   border-radius: 5px;
 }
+
 .infoch{
   display: flex;
 }
+
 .info{
   align-items: right;
   margin: 0px;
@@ -72,11 +74,12 @@ input{
   background-color: black;
   border-radius: 50%;
 }
+
 .info:hover{
   background-color: red;
   color:black;
-
 }
+
 .rule{
   margin: 0px;
   padding: 5px;

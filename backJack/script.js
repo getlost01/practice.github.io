@@ -1,19 +1,30 @@
-let firstcard = (Math.floor(Math.random()*20)%10+2)
-let secondcard = (Math.floor(Math.random()*20)%10+2)
-let sum=firstcard + secondcard
-let hasBlackJack=false
+let firstcard , secondcard , sum=0
+let hasBlackJack=false ,isalive=false
 let message=""
-let isalive=true
+
+
+let cardnum=["","ace","two","three","four","five","six","seven","eight","nine","jack","queen","king"]
+let cardval=[0,11,2,3,4,5,6,7,8,9,10,10,10]
 
 let mes=document.querySelector("#message-el")
 
 function startgame()
 {
-   firstcard = (Math.floor(Math.random()*20)%10+2)
-   secondcard = (Math.floor(Math.random()*20)%10+2)
-   sum=firstcard + secondcard
+   isalive=true
+   hasBlackJack=false
+   firstcard = (Math.floor(Math.random()*12)+1)
+   secondcard = (Math.floor(Math.random()*12)+1)
+   sum=cardval[firstcard] + cardval[secondcard]
    document.getElementById("sum-el").textContent="Sum : "+sum
-   document.getElementById("card-el").textContent="Cards : "+firstcard+" "+secondcard
+   document.getElementById("card-el").textContent="Cards : "+cardnum[firstcard]+" - "+cardnum[secondcard]
+   if(firstcard===1 && secondcard===1)
+   {
+      message="You get new card \""+cardnum[secondcard]+"\" and your sum becomes \""+sum+"\" so you are out of game."
+      mes.textContent=message
+      document.getElementById("sum-el").textContent="Re-start the game !"
+      isalive=false
+      return
+   }
 
    check()
 }
@@ -21,12 +32,15 @@ function startgame()
 let newc;
 function newCard()
 {
-   newc = (Math.floor(Math.random()*20)%10+2)
-   sum+=newc
+   if(!isalive || hasBlackJack)
+    return
+   newc = (Math.floor(Math.random()*12)+1)
+   sum+=cardval[newc]
    document.getElementById("sum-el").textContent="Sum : "+sum
-   document.getElementById("card-el").textContent+=" "+newc
+   document.getElementById("card-el").textContent+=" - "+cardnum[newc]
    check()
 }
+
 function check()
 {
    if(sum<21)
@@ -35,16 +49,20 @@ function check()
    }
    else if(sum === 21)
    {
-      message="Yeh! YOU've got the BlackJack !"
+      message="🎉 🎉  Congratulations , \"BlackJack\" 🎉 🎉 !"
       hasBlackJack=true
    }
    else
    {
-      message="You're out of the game !"
+      message="You get new card \""+cardnum[newc]+"\" and your sum becomes \""+sum+"\" so you are out of game."
+      document.getElementById("card-el").textContent= "⚠️"
+      document.getElementById("sum-el").textContent="Re-start the game !"
       isalive=false
    }
    mes.textContent=message
 }
+
+
 let c=0
 function infomes()
 {
